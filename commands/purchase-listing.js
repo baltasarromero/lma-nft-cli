@@ -1,8 +1,8 @@
 const { ethers } = require("ethers");
 const setup = require("./setup");
 
-const purchaseListing = async function (nftAddress, tokenId) {
-  const [nftMarketplace, wallet] = await setup(process.env.BUYER_PRIVATE_KEY);
+const purchaseListing = async function (nftAddress, tokenId, privateKey) {
+  const [nftMarketplace, wallet] = await setup(privateKey);
 
   if (nftMarketplace === undefined) {
     console.log("The connection to the marketplace is not established");

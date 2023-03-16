@@ -7,7 +7,7 @@ const purchaseListing = require("../commands/purchase-listing");
 
 program
   .name("nft-cli")
-  .description("CLI to interact with the LMA NFT Marketplace")
+  .description("CLI to interact with the LMA NFT nodeMarketplace")
   .version("0.1.0");
 
 program
@@ -18,13 +18,18 @@ program
   .requiredOption("--price <price>", "Price for  the NFT to be listed")
   .requiredOption("--start <start>", "Start time for  the NFT listing")
   .requiredOption("--end <end>", "End time for  the NFT listing")
+  .requiredOption(
+    "--private-key <privateKey>",
+    "The private key ot the user's account"
+  )
   .action((options) => {
     createListing(
       options.nftAddress,
       options.tokenId,
       options.price,
       options.start,
-      options.end
+      options.end,
+      options.privateKey
     );
   });
 
@@ -33,8 +38,12 @@ program
   .description("Cancel a listing in the marketplace")
   .requiredOption("--nft-address <address>", "Address of the NFT to be listed")
   .requiredOption("--token-id <tokenId>", "Id of the NFT to be listed")
+  .requiredOption(
+    "--private-key <privateKey>",
+    "The private key ot the user's account"
+  )
   .action((options) => {
-    cancelListing(options.nftAddress, options.tokenId);
+    cancelListing(options.nftAddress, options.tokenId, options.privateKey);
   });
 
 program
@@ -45,8 +54,12 @@ program
     "Address of the NFT to be purchased"
   )
   .requiredOption("--token-id <tokenId>", "Id of the NFT to be purchased")
+  .requiredOption(
+    "--private-key <privateKey>",
+    "The private key ot the user's account"
+  )
   .action((options) => {
-    purchaseListing(options.nftAddress, options.tokenId);
+    purchaseListing(options.nftAddress, options.tokenId, options.privateKey);
   });
 
 program.parse();
