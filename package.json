@@ -1,8 +1,8 @@
 {
-  "name": "bltmr-nft-cli",
+  "name": "nft-cli",
   "version": "0.0.1",
   "bin": {
-    "nft-cli": "bin/nft-cli.js"
+    "nft-cli": "./bin/nft-cli.js"
   },
   "dependencies": {
     "commander": "10.0.0",
@@ -11,9 +11,6 @@
   "description": "A cli-tool to interact with LMANFTMarketplace",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "bin": {
-    "nft-cli": "./bin/nft.js"
   },
   "keywords": [
     "cli-tool",

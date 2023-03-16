@@ -4,10 +4,15 @@ const { ethers } = require("ethers");
 const setup = require("./setup");
 //const setup = require('../commands/setup');
 
-const createListing = async function (nftAddress, tokenId, price, start, end) {
-  const [nftMarketplace, listerWallet] = await setup(
-    process.env.SIGNER_PRIVATE_KEY
-  );
+const createListing = async function (
+  nftAddress,
+  tokenId,
+  price,
+  start,
+  end,
+  privateKey
+) {
+  const [nftMarketplace, listerWallet] = await setup(privateKey);
 
   if (nftMarketplace === undefined) {
     console.log("The connection to the marketplace is not established");

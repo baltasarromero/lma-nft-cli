@@ -15,7 +15,7 @@ const setup = async function (privateKey) {
 
   // Configuring the connection to an Ethereum node
   const provider = new ethers.providers.InfuraProvider(
-    "sepolia",
+    process.env.ETHEREUM_NETWORK,
     process.env.INFURA_PROJECT_ID
   );
 
@@ -25,7 +25,7 @@ const setup = async function (privateKey) {
   console.log("Wallet's balance", ethers.utils.formatEther(balance, 18));
 
   nftMarketplace = new Contract(
-    process.env.NFT_MARKETPLACE_SEPOLIA_ADDRESS,
+    process.env.NFT_MARKETPLACE_CONTRACT_ADDRESS,
     NFTMarketplaceArtifact.abi,
     wallet
   );
