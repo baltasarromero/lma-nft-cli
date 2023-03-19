@@ -2,14 +2,11 @@ require("dotenv").config();
 
 const { ethers } = require("ethers");
 const setup = require("./setup");
-//const setup = require('../commands/setup');
 
 const createListing = async function (
   nftAddress,
   tokenId,
   price,
-  start,
-  end,
   privateKey
 ) {
   const [nftMarketplace, listerWallet] = await setup(privateKey);
@@ -26,16 +23,15 @@ const createListing = async function (
 
   const listingPriceWei = ethers.utils.parseEther(price);
   console.log(
-    `Listing ${nftAddress}, ${tokenId}, ${listingPriceWei}, ${start}, ${end}`
+    `Listing ${nftAddress}, ${tokenId}, ${listingPriceWei}`
   );
   try {
     const createListingTx = await nftMarketplace.createListing(
       nftAddress,
       tokenId,
-      listingPriceWei,
-      start,
-      end
+      listingPriceWei
     );
+
     const createListingTxReceipt = await createListingTx.wait();
     if (createListingTxReceipt.status != 1) {
       // Status 1 is success
@@ -44,7 +40,7 @@ const createListing = async function (
 
     const listingsCount = await nftMarketplace.listingsCount();
     console.log(
-      "Succesfully listed the NFT. Number of listings in the marketPlace: ",
+      "Successfully listed the NFT. Number of listings in the marketPlace: ",
       listingsCount.toString()
     );
   } catch (error) {

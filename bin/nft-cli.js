@@ -15,9 +15,7 @@ program
   .description("Create a new listing in the marketplace")
   .requiredOption("--nft-address <address>", "Address of the NFT to be listed")
   .requiredOption("--token-id <tokenId>", "Id of the NFT to be listed")
-  .requiredOption("--price <price>", "Price for  the NFT to be listed")
-  .requiredOption("--start <start>", "Start time for  the NFT listing")
-  .requiredOption("--end <end>", "End time for  the NFT listing")
+  .requiredOption("--price <price>", "Price for  the NFT to be listed in Ether")
   .requiredOption(
     "--private-key <privateKey>",
     "The private key ot the user's account"
@@ -27,8 +25,6 @@ program
       options.nftAddress,
       options.tokenId,
       options.price,
-      options.start,
-      options.end,
       options.privateKey
     );
   });
@@ -36,8 +32,8 @@ program
 program
   .command("cancelListing")
   .description("Cancel a listing in the marketplace")
-  .requiredOption("--nft-address <address>", "Address of the NFT to be listed")
-  .requiredOption("--token-id <tokenId>", "Id of the NFT to be listed")
+  .requiredOption("--nft-address <address>", "Address of the NFT to be unlisted")
+  .requiredOption("--token-id <tokenId>", "Id of the NFT to be unlisted")
   .requiredOption(
     "--private-key <privateKey>",
     "The private key ot the user's account"

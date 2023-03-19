@@ -19,10 +19,18 @@ const purchaseListing = async function (nftAddress, tokenId, privateKey) {
   const remoteListingKey = await nftMarketplace.getKey(nftAddress, tokenId);
 
   try {
-    const listing = await nftMarketplace.listings(remoteListingKey);
+    const listingPrice = await nftMarketplace.listings(remoteListingKey);
 
-    const purchaseListingTx = await nftMarketplace.purchase(remoteListingKey, {
-      value: listing.price,
+    /* console.log("trying to estimate cost. nft price is ", listingPrice.toString());
+    const  gasLimit = await nftMarketplace.estimateGas.purchase(nftAddress, tokenId, {value: listingPrice});
+    console.log("estimated gas limit", gasLimit);
+    const estimatedFee = (await provider.getFeeData()).maxFeePerGas.mul(gasLimit);
+    console.log("estimated fee", estimatedFee);
+ */
+
+
+    const purchaseListingTx = await nftMarketplace.purchase(nftAddress, tokenId, {
+      value: listingPrice,
     });
 
     const purchaseListingTxReceipt = await purchaseListingTx.wait();
@@ -38,7 +46,7 @@ const purchaseListing = async function (nftAddress, tokenId, privateKey) {
       listingsCount.toString()
     );
   } catch (error) {
-    console.log(error.error.reason);
+    console.log(error);
   }
 };
 

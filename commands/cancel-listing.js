@@ -16,11 +16,9 @@ const cancelListing = async function (nftAddress, tokenId, privateKey) {
 
   console.log(`Cancelling listing for ${nftAddress} tokenId: ${tokenId}`);
 
-  const remoteListingKey = await nftMarketplace.getKey(nftAddress, tokenId);
-
   try {
     const cancelListingTx = await nftMarketplace.cancelListing(
-      remoteListingKey
+      nftAddress, tokenId
     );
 
     const cancelListingTxReceipt = await cancelListingTx.wait();

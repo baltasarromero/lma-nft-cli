@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "commander": "10.0.0",
-    "ethers": "5.7.2"
+    "ethers": "5.7.2",
+    "dotenv": "^16.0.3"
   },
   "description": "A cli-tool to interact with LMANFTMarketplace",
   "scripts": {
@@ -18,8 +19,5 @@
     "marketplace"
   ],
   "author": "Baltasar Romero",
-  "license": "MIT",
-  "devDependencies": {
-    "dotenv": "^16.0.3"
-  }
+  "license": "MIT"
 }
