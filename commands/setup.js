@@ -9,7 +9,7 @@ let nftMarketplace;
 
 const setup = async function (privateKey) {
   if (privateKey === undefined || privateKey === "") {
-    console.log("PrivateKey not provided");
+    console.log("PrivateKey not provided");cd 
     return;
   }
 
@@ -29,9 +29,7 @@ const setup = async function (privateKey) {
     NFTMarketplaceArtifact.abi,
     wallet
   );
-
-  console.log("NFTMarketplace address contract", nftMarketplace.address);
-
+  
   return [nftMarketplace, wallet];
 };
 
