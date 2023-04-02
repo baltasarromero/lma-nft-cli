@@ -12,8 +12,6 @@
 
 ## General info
 
-  
-
 This project is a simple command line tool to interact with the NFT Marketplace created for LimeAcademy's bootcamp. Github repo: [here](https://github.com/baltasarromero/lma-nft-marketplace)
 
 Version 0.1.0 supports interactions with Listings and NFT Offers. 
@@ -22,17 +20,11 @@ This tool supports creating a listing, purchasing an NFT listed in the marketpla
 
 ### NFT Offers
 The tool supports creating  offers for NFTs that are not listed in the marketplace, cancelling an offer and accepting offers having previously approved the marketplace or using an [EIP721](https://eips.ethereum.org/EIPS/eip-712) type permits.
-In order to use the permit based function (acceptNFTOfferWithPermit) the NFT has to either extend abstract contract [ERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/contracts/ERC721WithPermit.sol)  or implement [IERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/interfaces/IERC721WithPermit.sol) interface.
-
-  
+In order to use the permit based function (acceptNFTOfferWithPermit) the NFT has to either extend abstract contract [ERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/contracts/ERC721WithPermit.sol)  or implement [IERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/interfaces/IERC721WithPermit.sol) interface. For testing purposed the following contract [MyNFTWithPermit](https://sepolia.etherscan.io/address/0xD844FDbe21FA66dd883bc132bc1D37141437B0aE#readContract) is deployed in sepolia testnet could be used.
 
 ## Technologies
 
-  
-
 Project is created with:
-
-  
 
 - Node js
 
@@ -44,8 +36,6 @@ Project is created with:
 
 ## Setup
 
-  
-
 To run this project, install it locally using npm:
 ```
 
@@ -53,7 +43,6 @@ $ cd ../cli-test
 
 $ npm i -g
 ```
-  
 
 ## Configuration
 
@@ -68,13 +57,19 @@ NFT_MARKETPLACE_CONTRACT_ADDRESS = {NFT_MARKETPLACE_CONTRACT_ADDRESS} //NFTMarke
 ```
 ## Supported Commands
 
-### Create Listing
+### Listings
+In the order to interact with the Marketplace using these commands any ERC721 NFT will be supported.
 
-### Cancel Listing
+####  Create Listing
 
-### Purchase Listing
+#### Cancel Listing
 
-### Create NFT Offer
+####  Purchase Listing
+
+### NFT Offers
+Any ERC721 NFT can be used for the create, cancel and accept functions. AcceptNFTOfferWithPermit command is only supported for NTFs with the characteristics mentioned in the introductory section.  
+
+#### Create NFT Offer
 Creates an offer for an NFT that is not listed in the marketplace. This supports any NFT that complies with IERC721 interface. The owner of the NFT can't create and offer. If there's an open listing for the NFT the offer won't be accepted as the user should just purchase the open listing.
 #### Parameters (all parameters are required)
 
