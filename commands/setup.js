@@ -8,29 +8,34 @@ let wallet;
 let nftMarketplace;
 
 const setup = async function (privateKey) {
-  if (privateKey === undefined || privateKey === "") {
-    console.log("PrivateKey not provided");cd 
-    return;
-  }
+	if (privateKey === undefined || privateKey === "") {
+		console.log("PrivateKey not provided");
+		return;
+	}
 
-  // Configuring the connection to an Ethereum node
-  const provider = new ethers.providers.InfuraProvider(
-    process.env.ETHEREUM_NETWORK,
-    process.env.INFURA_PROJECT_ID
-  );
+	// Configuring the connection to an Ethereum node
+	const provider = new ethers.providers.InfuraProvider(
+		process.env.ETHEREUM_NETWORK,
+		process.env.INFURA_PROJECT_ID
+	);
 
-  wallet = new Wallet(privateKey, provider);
+	wallet = new Wallet(privateKey, provider);
 
-  const balance = await provider.getBalance(wallet.address);
-  console.log("Wallet's balance", ethers.utils.formatEther(balance, 18));
+	const balance = await provider.getBalance(wallet.address);
+	console.log(`Wallet's balance ${ethers.utils.formatEther(balance, 18)} ETH`);
 
-  nftMarketplace = new Contract(
-    process.env.NFT_MARKETPLACE_CONTRACT_ADDRESS,
-    NFTMarketplaceArtifact.abi,
-    wallet
-  );
-  
-  return [nftMarketplace, wallet];
+	if (process.env.NFT_MARKETPLACE_CONTRACT_ADDRESS == null) {
+		console.log("NFT Marketplace address not configured");
+		return;
+	}
+
+	nftMarketplace = new Contract(
+		process.env.NFT_MARKETPLACE_CONTRACT_ADDRESS,
+		NFTMarketplaceArtifact.abi,
+		wallet
+	);
+
+	return [nftMarketplace, wallet];
 };
 
 module.exports = setup;
