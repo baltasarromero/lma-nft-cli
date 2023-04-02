@@ -14,9 +14,15 @@
 
   
 
-This project is a simple commmand line tool to interact with the L¡meAcademy NFT Marketplace.
+This project is a simple command line tool to interact with the NFT Marketplace created for LimeAcademy's bootcamp. Github repo: [here](https://github.com/baltasarromero/lma-nft-marketplace)
 
-Version 0.1.0 only supports interactions with Listings. It supports creating a listing, purchasing an NFT listed in the marketplace and cancelling a listing.
+Version 0.1.0 supports interactions with Listings and NFT Offers. 
+### Listings
+This tool supports creating a listing, purchasing an NFT listed in the marketplace and cancelling a previously listing.
+
+### NFT Offers
+The tool supports creating  offers for NFTs that are not listed in the marketplace, cancelling an offer and accepting offers having previously approved the marketplace or using an [EIP721](https://eips.ethereum.org/EIPS/eip-712) type permits.
+In order to use the permit based function (acceptNFTOfferWithPermit) the NFT has to either extend abstract contract [ERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/contracts/ERC721WithPermit.sol)  or implement [IERC721WithPermit](https://github.com/baltasarromero/lma-nft-marketplace/interfaces/IERC721WithPermit.sol) interface.
 
   
 
@@ -51,8 +57,8 @@ $ npm i -g
 
 ## Configuration
 
-Create an .env file with the following key/values either in the directory where the package is installed or in the directory you are running the command otherwise the tool will fail.
-  
+Create an .env file with the following key/values either in the directory where you will be running the command. 
+
 ```
 ETHEREUM_NETWORK = {NETWORK-NAME} //The name of the network where the NFTMarketplace is deployed. Currently sepolia
 
