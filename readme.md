@@ -16,7 +16,7 @@ This project is a simple command line tool to interact with the NFT Marketplace 
 
 Version 0.1.0 supports interactions with Listings and NFT Offers. 
 ### Listings
-This tool supports creating a listing, purchasing an NFT listed in the marketplace and cancelling a previously listing.
+This tool supports creating a listing, purchasing an NFT listed in the marketplace and cancelling a previously listing. Contract used for testing purposes "TestCarsNFT" deployed at 0x38Db61983fb2A5853e09466067333EFf5A04A04F in sepolia.
 
 ### NFT Offers
 The tool supports creating  offers for NFTs that are not listed in the marketplace, cancelling an offer and accepting offers having previously approved the marketplace or using an [EIP721](https://eips.ethereum.org/EIPS/eip-712) type permits.
@@ -53,7 +53,7 @@ ETHEREUM_NETWORK = {NETWORK-NAME} //The name of the network where the NFTMarketp
 
 INFURA_PROJECT_ID = {INFURA_PROJECT_ID} //Your Infura project ID
 
-NFT_MARKETPLACE_CONTRACT_ADDRESS = {NFT_MARKETPLACE_CONTRACT_ADDRESS} //NFTMarketplace is currently deployed in sepolia test network @ 0x09DB9335Dbc147EB20E2C93e03e67BE457068881
+NFT_MARKETPLACE_CONTRACT_ADDRESS = {NFT_MARKETPLACE_CONTRACT_ADDRESS} //NFTMarketplace is currently deployed in sepolia test network @ 0x7401B735b57Ca565A44e1D17C132b7aB2f8a15a8
 ```
 ## Supported Commands
 
